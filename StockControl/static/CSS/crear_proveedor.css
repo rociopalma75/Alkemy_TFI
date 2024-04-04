@@ -1,0 +1,24 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    font-family: "Slabo 27px", serif;
+    font-style: normal;
+    letter-spacing: 2px;
+}
+
+.navbar{
+    background-color: #06132f;
+}
+
+.navbar a{
+    color: #ffff;
+}
+
+main .container-fluid{
+    min-height: 100vh;
+    background-color: #091c47; 
+}
+
+.contenedor-registro{
+    background-color: #0c255e;
+}

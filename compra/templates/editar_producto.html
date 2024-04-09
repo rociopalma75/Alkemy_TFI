@@ -1,0 +1,63 @@
+{% extends 'base_lista.html' %}
+
+{% block title %}
+Producto Editar
+{% endblock %}
+
+{% block navbar %}
+<a class="nav-link" href="/proveedores">Proveedores</a>
+<a class="nav-link active" aria-currente="page" href="/productos">Productos</a>
+{% endblock %}
+
+{% block table %}
+<thead>
+    <tr>
+        <th>ID</th>
+        <th>Nombre</th>
+        <th>Precio</th>
+        <th>Stock Actual</th>
+        <th>Proveedor</th>
+        <th colspan="2">Opciones</th>
+    </tr>
+</thead>
+<tbody>
+    {% for producto in productos %}
+    {% if producto.id == p.id %}
+    <tr>
+        <form action="/producto/editar" method="POST">{% csrf_token %}
+            <td><input type="number" class="form-control bg-secondary" name="idProducto" id="idProducto" value="{{p.id}}"
+                    readonly></td>
+            <td><input type="text" class="form-control" name="nombre" id="nombre" placeholder="Ingrese su nombre"
+                    value="{{producto.nombre}}" required></td>
+            <td><input type="number" class="form-control" name="precio" id="precio" placeholder="Ingrese su precio"
+                    value="{{producto.precio}}" required></td>
+            <td><input type="number" class="form-control" name="stock_actual" id="stock_actual"
+                    placeholder="Ingrese su stock" value="{{producto.stock_actual}}" required></td>
+            <td><select class="form-select rounded" id="proveedor" name="proveedor">
+                    <option value="" selected>{{producto.proveedor}}</option>
+                    {% for proveedor in proveedores %}
+                    <option value="{{proveedor.id}}">{{proveedor}}</option>
+                    {% endfor %}
+                </select></td>
+            <td><input type="submit" class="btn btn-success" value="Confirmar"></td>
+            <td><a href="/producto/eliminar/{{producto.id}}" class="btn btn-danger">Eliminar</a></td>
+        </form>
+    </tr>
+    {% else %}
+    <tr>
+        <td>{{producto.id}}</td>
+        <td>{{producto.nombre}}</td>
+        <td>{{producto.precio}}</td>
+        <td>{{producto.stock_actual}}</td>
+        {% if producto.proveedor == None %}
+        <td>-</td>
+        {% else %}
+        <td>{{producto.proveedor}}</td>
+        {% endif %}
+        <td><a href="/producto/editar/{{producto.id}}" class="btn btn-info"><i class="fa-solid fa-pen" style="color: #0b446f;"></i> Editar</a></td>
+        <td><a href="/producto/eliminar/{{producto.id}}" class="btn btn-danger">Eliminar</a></td>
+        {% endif %}
+    </tr>
+    {% endfor %}
+</tbody>
+{% endblock %}

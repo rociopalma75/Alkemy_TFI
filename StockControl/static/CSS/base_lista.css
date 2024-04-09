@@ -1,9 +1,9 @@
 *{
     margin: 0px;
     padding: 0px;
-    font-family: "Slabo 27px", serif;
+    font-family: "Lato", sans-serif;
     font-style: normal;
-    letter-spacing: 2px;
+    letter-spacing: 1px;
 }
 
 .navbar{
@@ -23,7 +23,11 @@ td, th{
     text-align: center;
 }
 
-.table-hover tbody tr:hover td{
-    background-color: #4f79a6;
+.list-group-item{
+    background-color: #0c255e;
+}
+
+.list-group-item:hover{
+    background-color: #06132f;
 }
 

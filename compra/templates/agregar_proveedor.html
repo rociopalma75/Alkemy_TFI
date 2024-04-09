@@ -1,0 +1,58 @@
+{% extends 'base_crear.html' %}
+{% load static %}
+
+{% block title %}
+Producto
+{% endblock %}
+
+{% block list-group %}
+<a href="/proveedor/create"
+    class="list-group-item list-group-item-action text-white mb-4 border border-primary border-2 rounded-3"><i class="fa-solid fa-pen-to-square"></i> Registrar
+    proveedor</a>
+<a href="/producto/registro"
+    class="list-group-item list-group-item-action text-white border border-primary border-2 rounded-2 active"><i class="fa-solid fa-pen-to-square"></i> Registrar
+    producto</a>
+{% endblock %}
+
+
+{% block form %}
+<form action="/producto/completarCreateProducto" method="POST"> {% csrf_token %}
+    <h3 class="border-bottom text-white text-center">Registrar Producto</h3>
+
+    <input type="number" class="form-control mb-2 mt-5" name="id" id="id"  value="{{producto.id}}" readonly>
+
+    <input type="text" class="form-control mb-2" name="nombre" id="nombre"  value="{{producto.nombre}}" placeholder="Ingrese su nombre" required readonly>
+
+    <input type="number" class="form-control mb-2" name="precio" id="precio" value="{{producto.precio}}" placeholder="Ingrese su precio" required readonly>
+    
+    <input type="number" class="form-control mb-2" name="stock_actual" id="stock_actual" value="{{producto.stock_actual}}" placeholder="Ingrese su stock" required readonly>                            
+
+    <div class="input-group mb-3">
+        <div class="input-group-prepend me-2 w-25">
+          <label class="input-group-text" for="proveedor">Proveedor</label>
+        </div>
+        <select class="custom-select w-50 rounded" id="proveedor" name="proveedor">
+            <option selected></option>
+            {% for proveedor in proveedores %}
+            <option value="{{proveedor.id}}">{{proveedor}}</option>
+            {% endfor %}
+        </select>
+        <a href="/producto/{{producto.id}}/proveedor/registro"><img src="{% static 'imgs/mas_2.png' %}"class="d-inline-block ms-3" width="30" alt="Agregar otro proveedor" title="Agregar otro proveedor"></a>
+    </div>
+    <input type="submit" class="btn btn-primary w-75 d-block mx-auto" value="Registrar">                            
+</form>
+{% endblock %}
+
+{% block nuevoObjeto %}
+    <h5 class="border-bottom text-center pb-2">Nuevo Producto Registrado</h4>
+    <p class="mt-4">ID: {{producto.id}}</p>
+    <p>Nombre: {{producto.nombre}}</p>
+    <p>Precio: {{producto.precio}}</p>
+    <p>Stock Actual: {{producto.stock_actual}}</p>
+    {% if producto.proveedor == None %}
+        <p>Proveedor: - </p>
+    {% else %}
+        <p>Proveedor: {{producto.proveedor}}</p>
+    {% endif %}
+{% endblock %}
+

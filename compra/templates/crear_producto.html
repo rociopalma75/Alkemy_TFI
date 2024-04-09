@@ -1,0 +1,47 @@
+{% extends 'base_crear.html' %}
+
+{% block title %}
+Producto
+{% endblock %}
+
+{% block list-group %}
+<a href="/proveedor/create"
+    class="list-group-item list-group-item-action text-white mb-4 border border-primary border-2 rounded-3"><i class="fa-solid fa-pen-to-square"></i> Registrar
+    proveedor</a>
+<a href="/producto/registro"
+    class="list-group-item list-group-item-action text-white border border-primary border-2 rounded-2 active"><i class="fa-solid fa-pen-to-square"></i> Registrar
+    producto</a>
+{% endblock %}
+
+
+{% block form %}
+<form action="/producto/create" method="POST"> {% csrf_token %}
+    <h3 class="border-bottom text-white text-center">Registrar Producto</h3>
+
+    <input type="text" class="form-control mb-2 mt-5" name="nombre" id="nombre"
+        placeholder="Ingrese su nombre" required>
+
+    <input type="number" class="form-control mb-2" name="precio" id="precio"
+        placeholder="Ingrese su precio" required>
+
+    <input type="number" class="form-control mb-2" name="stock_actual" id="stock_actual"
+        placeholder="Ingrese su stock" required>
+    <p class="text-white text-center texto_small_weight-light">Seleccione continuar para agregar el proveedor</p>
+    <input type="submit" class="btn btn-primary w-75 d-block mx-auto" value="Continuar">
+</form>
+{% endblock %}
+
+{% block nuevoObjeto %}
+    {% if producto %}
+        <h5 class="border-bottom text-center pb-2">Nuevo Producto Registrado</h4>
+        <p class="mt-4">ID: {{producto.id}}</p>
+        <p>Nombre: {{producto.nombre}}</p>
+        <p>Precio: {{producto.precio}}</p>
+        <p>Stock Actual: {{producto.stock_actual}}</p>
+        {% if producto.proveedor == None %}
+            <p>Proveedor: - </p>
+        {% else %}
+            <p>Proveedor: {{producto.proveedor}}</p>
+        {% endif %}
+    {% endif %}
+{% endblock %}

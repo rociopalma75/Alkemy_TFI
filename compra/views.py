@@ -1,16 +1,10 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from .models import Proveedor, Producto
-from django.template import Template, Context
 
 # Create your views here.
-
 def mostrarCreateProveedorParaProducto(request, idProducto):
     return render(request, 'crear_proveedor.html',{'idProducto': idProducto})
-
-def mostrarCreateProducto(request):
-    proveedores = Proveedor.objects.all()
-    return render(request, 'crear_producto.html', {'proveedores': proveedores})
 
 def mostrarEditarProducto(request, productoId):
     producto = Producto.objects.get(id=productoId)
@@ -33,7 +27,6 @@ def createProveedor(request):
         prov.apellido = request.POST['apellido']
         prov.dni = request.POST['dni']
         prov.save()
-
         try:
             if request.POST['idProducto'] is not None:
                 idProducto = request.POST['idProducto']
@@ -42,6 +35,9 @@ def createProveedor(request):
                 return render(request, 'agregar_proveedor.html', {'producto': producto, 'proveedores': proveedores})
         except:    
             return render(request, 'crear_proveedor.html', {'proveedor': prov})
+    else: # Metodo GET
+        return render(request, 'crear_proveedor.html')
+
 
 def createProducto(request):
     if request.method == 'POST':
@@ -55,8 +51,10 @@ def createProducto(request):
         proveedores = Proveedor.objects.all()
 
         return render(request, 'agregar_proveedor.html', {'producto': prod, 'proveedores': proveedores})
+    else: #Metodo GET
+        return render(request, 'crear_producto.html')
     
-def completarCreateProducto(request): 
+def agregarProveedorAProducto(request): 
     productoId = request.POST['id']
     proveedorId = request.POST['proveedor']
     proveedor = Proveedor.objects.get(id=proveedorId)
@@ -65,7 +63,6 @@ def completarCreateProducto(request):
     producto.save()
 
     return render(request, 'crear_producto.html',{'producto': producto})
-
 
 def deleteProveedor(request, proveedorId):
     proveedor = Proveedor.objects.get(id=proveedorId)
@@ -92,20 +89,4 @@ def editarProducto(request):
     
     return redirect('/productos')
 
-def proveedorCreate(request):
-    if request.method == 'POST':
-        prov = Proveedor()
-        prov.nombre = request.POST['nombre']
-        prov.apellido = request.POST['apellido']
-        prov.dni = request.POST['dni']
-        prov.save()
-        try:
-            if request.POST['idProducto'] is not None:
-                idProducto = request.POST['idProducto']
-                producto = Producto.objects.get(id=idProducto)
-                proveedores = Proveedor.objects.all()
-                return render(request, 'agregar_proveedor.html', {'producto': producto, 'proveedores': proveedores})
-        except:    
-            return render(request, 'crear_proveedor.html', {'proveedor': prov})
-    else: # Metodo GET
-        return render(request, 'crear_proveedor.html')
+

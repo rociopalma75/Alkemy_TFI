@@ -11,11 +11,15 @@ class Proveedor(models.Model):
         return f'{self.apellido}, {self.nombre}'
     
     def clean(self): #Validaciones de cada campo
-        if not self.nombre.isalpha() or not (" " in self.nombre):
-            raise ValidationError('nombreInvalido')
+        if not self.nombre.isalpha():
+            for caracter in self.nombre:
+                if not caracter.isalpha() and not caracter.isspace():
+                    raise ValidationError('nombreInvalido')
 
-        if not self.apellido.isalpha() or not (" " in self.apellido):
-            raise ValidationError('apellidoInvalido')
+        if not self.apellido.isalpha():
+            for caracter in self.apellido:
+                if not caracter.isalpha() and not caracter.isspace():
+                    raise ValidationError('apellidoInvalido')
         
         if len(str(self.dni)) <= 7 or len(str(self.dni)) >= 10: # Validacion muy manual
             raise ValidationError('dniInvalido')
@@ -34,8 +38,10 @@ class Producto(models.Model):
         return self.nombre
     
     def clean(self):
-        if not self.nombre.isalpha() or not (" " in self.nombre):
-            raise ValidationError('nombreInvalido')
+        if not self.nombre.isalpha():
+            for caracter in self.nombre:
+                if not caracter.isalpha() and not caracter.isspace():
+                    raise ValidationError('nombreInvalido')
     
     class Meta:
         ordering=['nombre', '-stock_actual'] #Orden asc en nombre y desc en stock

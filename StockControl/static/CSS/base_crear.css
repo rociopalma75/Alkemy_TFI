@@ -35,3 +35,8 @@ main .container-fluid{
     font-size: smaller;
     font-weight: 300;
 }
+
+.texto-error{
+    font-size: smaller;
+    color: red;
+}

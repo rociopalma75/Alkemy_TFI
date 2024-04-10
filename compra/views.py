@@ -26,6 +26,13 @@ def createProveedor(request):
         prov.nombre = request.POST['nombre']
         prov.apellido = request.POST['apellido']
         prov.dni = request.POST['dni']
+
+        try:
+            prov.full_clean()
+        except Exception as e:
+            print("Excepcion:" , e)
+            return render(request, 'crear_proveedor.html', {'e' : e})
+
         prov.save()
         try:
             if request.POST['idProducto'] is not None:
@@ -46,10 +53,15 @@ def createProducto(request):
         prod.precio = request.POST['precio']
         prod.stock_actual = request.POST['stock_actual']
         prod.proveedor = None
+
+        try:
+            prod.full_clean()
+        except Exception as e:
+            print("Excepcion: ", e)
+            return render(request, 'crear_producto.html',{'e':e})
+        
         prod.save()
-
         proveedores = Proveedor.objects.all()
-
         return render(request, 'agregar_proveedor.html', {'producto': prod, 'proveedores': proveedores})
     else: #Metodo GET
         return render(request, 'crear_producto.html')

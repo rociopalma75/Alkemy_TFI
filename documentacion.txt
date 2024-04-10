@@ -1,0 +1,16 @@
+Palma, Emilce Rocío . DNI: 44105560
+
+Comisión 35
+
+Superuser:
+	- Username: admin
+	- Password: admin
+
+Github: https://github.com/rociopalma75/Alkemy_TFI
+
+Anotaciones / Comentarios:
+	- Template: 'agregar_proveedor.html' (está destinado para agregar proveedor luego de crear un producto, de modo que al dar Continuar se muestra esa ventana 'agregar_proveedor.html', NO es para crear proveedor. Solamente agrega los ya existentes)
+	- Validaciones de cada campo las realizo al crear los objetos, de forma que si es invalido no se guarden en la base de datos. Las validaciones estan especificadas dentro del models.py
+			- Este tema lo voy a seguir profundizando y practicando, mi autocritica a esto es que considero que están muy "manuales" y no aprovecho mucho las funciones y practicidades de Django-.
+	- Creacion de producto: Divido la operacion en 2 partes, primero un form que guarda el producto directamente sin proveedor, se guarda en la base de datos. Luego se muestra una vista aparte donde pueda agregar el proveedor. Con lo cual para esta operación utilizo 2 templates(create_producto.html y agregar_proveedor.html) y 2 views (createProducto y agregarProveedorAProducto)
+	- Plantillas bases: base_crear.html y base_lista.html las incorpore para no estar repitiendo tanto codigo mas que nada sirven de plantillas porque lo unico que cambio es el contenido del body. Podría decir que estuve tratando de modularizar lo máximo posible.

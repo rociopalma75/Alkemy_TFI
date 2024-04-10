@@ -15,6 +15,9 @@ Producto
 
 
 {% block form %}
+{% if e %}
+    <p class="texto-error text-center mb-3 ">Ingresaste caracteres numericos. No es valido en ese campo </p>
+{% endif %}
 <form action="/producto/create" method="POST"> {% csrf_token %}
     <h3 class="border-bottom text-white text-center">Registrar Producto</h3>
 

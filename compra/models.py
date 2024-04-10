@@ -13,7 +13,7 @@ class Proveedor(models.Model):
     def clean(self): #Validaciones de cada campo
         if not self.nombre.isalpha():
             for caracter in self.nombre:
-                if not caracter.isalpha() and not caracter.isspace():
+                if not caracter.isalpha() and not caracter.isspace(): # Apenas lee un numero entra al IF  (Si es espacio o letra - se acepta- )
                     raise ValidationError('nombreInvalido')
 
         if not self.apellido.isalpha():

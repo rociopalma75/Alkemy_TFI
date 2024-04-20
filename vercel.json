@@ -2,7 +2,7 @@
     "builds":[{
         "src" : "StockControl/wsgi.py",
         "use" : "@vercel/python",
-        "config" : { "maxLambdaSixe": "15mb", "runtime":"python3.9"}
+        "config" : { "maxLambdaSize": "15mb", "runtime":"python3.9"}
     }],
     "routes":[
         {

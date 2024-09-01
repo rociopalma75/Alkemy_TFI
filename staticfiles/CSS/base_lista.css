@@ -1,0 +1,33 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    font-family: "Lato", sans-serif;
+    font-style: normal;
+    letter-spacing: 1px;
+}
+
+.navbar{
+    background-color: #06132f;
+}
+
+.navbar a{
+    color: #ffff;
+}
+
+main .container-fluid{
+    min-height: 100vh;
+    background-color: #091c47; 
+}
+
+td, th{
+    text-align: center;
+}
+
+.list-group-item{
+    background-color: #0c255e;
+}
+
+.list-group-item:hover{
+    background-color: #06132f;
+}
+

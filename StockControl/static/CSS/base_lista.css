@@ -6,17 +6,20 @@
     letter-spacing: 1px;
 }
 
+body{
+    background-color: #091c47; 
+}
+
 .navbar{
     background-color: #06132f;
-}
 
-.navbar a{
-    color: #ffff;
-}
+    a{
+        color: #ffff;
+    }
 
-main .container-fluid{
-    min-height: 100vh;
-    background-color: #091c47; 
+    li{
+        margin: 5px 10px !important;
+    }
 }
 
 td, th{
@@ -31,3 +34,12 @@ td, th{
     background-color: #06132f;
 }
 
+@media(max-width:768px){
+    body{
+        font-size: 0.9em;
+    }
+
+    table a{
+        padding: 3px 6px !important;
+    }
+}

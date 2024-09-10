@@ -5,13 +5,13 @@
 {% endblock %}
 
 {% block navbar %}
-<a class="nav-link" href="/proveedores">Proveedores</a>
-<a class="nav-link active" aria-currente="page" href="/productos">Productos</a>
+<li class="nav-item"><a class="nav-link p-2" href="/proveedores">Proveedores</a></li>
+<li class="nav-item"><a class="nav-link active p-2" aria-currente="page" href="/productos">Productos</a></li>
 {% endblock %}
 
 {% block table %}
 <thead>
-    <tr>
+    <tr class="align-middle">
         <th>ID</th>
         <th>Nombre</th>
         <th>Precio</th>
@@ -32,8 +32,8 @@
         {% else %}
             <td>{{producto.proveedor}}</td>
         {% endif %}
-        <td><a href="/producto/editar/{{producto.id}}" class="btn btn-info"><i class="fa-solid fa-pen" style="color: #0b446f;"></i> Editar</a></td>
-        <td><a href="/producto/eliminar/{{producto.id}}" class="btn btn-danger">Eliminar</a></td>
+        <td><a href="/producto/editar/{{producto.id}}" class="btn btn-info"><i class="fa-solid fa-pen" style="color: #0b446f;"></i></a></td>
+        <td><a href="/producto/eliminar/{{producto.id}}" class="btn btn-danger"><i class="fa-solid fa-xmark" style="color: #fafafa;"></i></a></td>
     </tr>
     {% endfor %}
 </tbody>

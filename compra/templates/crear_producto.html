@@ -19,7 +19,7 @@ Producto
     <p class="texto-error text-center mb-3 ">Ingresaste caracteres numericos. No es valido en ese campo </p>
 {% endif %}
 <form action="/producto/create" method="POST"> {% csrf_token %}
-    <h3 class="border-bottom text-white text-center">Registrar Producto</h3>
+    <h3 class="border-bottom text-white text-center pb-2">Registrar Producto</h3>
 
     <input type="text" class="form-control mb-2 mt-5" name="nombre" id="nombre"
         placeholder="Ingrese su nombre" required>

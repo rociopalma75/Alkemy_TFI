@@ -5,13 +5,13 @@
 {% endblock %}
 
 {% block navbar %}
-<a class="nav-link active" aria-currente="page" href="/proveedores">Proveedores</a>
-<a class="nav-link" href="/productos">Productos</a>
+<li class="nav-item"><a class="nav-link active p-2" aria-currente="page" href="/proveedores">Proveedores</a></li>
+<li class="nav-item"><a class="nav-link p-2" href="/productos">Productos</a></li>
 {% endblock %}
 
 {% block table %}
 <thead>
-    <tr>
+    <tr class="align-middle">
         <th>ID</th>
         <th>Apellido</th>
         <th>Nombre</th>
@@ -26,7 +26,7 @@
         <td>{{proveedor.apellido}}</td>
         <td>{{proveedor.nombre}}</td>
         <td>{{proveedor.dni}}</td>
-        <td><a href="/proveedor/eliminar/{{proveedor.id}}" class="btn btn-danger"><i class="fa-solid fa-xmark" style="color: #fafafa;"></i> Eliminar</a></td>
+        <td><a href="/proveedor/eliminar/{{proveedor.id}}" class="btn btn-danger"><i class="fa-solid fa-xmark" style="color: #fafafa;"></i></a></td>
     </tr>
     {% endfor %}
 </tbody>

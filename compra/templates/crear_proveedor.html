@@ -19,7 +19,7 @@ Proveedor
     <p class="texto-error text-center mb-3 ">Ingresaste algunos campos invalidos. Nombre y apellido no permite caracteres numericos. Longitud del DNI permitida es entre 8 y 9</p>    
 {% endif %}
 <form action="/proveedor/create" method="POST"> {% csrf_token %}
-    <h3 class="border-bottom text-white text-center">Registrar Proveedor</h3>
+    <h3 class="border-bottom text-white text-center pb-2">Registrar Proveedor</h3>
     {% if idProducto %}
     <h5 class="text-white">Producto ID</h5>
     <input type="number" class="form-control mb-4" name="idProducto" id="idProducto"

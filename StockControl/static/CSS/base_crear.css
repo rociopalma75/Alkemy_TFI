@@ -8,20 +8,24 @@
 
 .navbar{
     background-color: #06132f;
+
+    a{
+        color: #ffff;
+    }
+
+    li{
+        margin: 5px 10px !important;
+    }
 }
 
-.navbar a{
-    color: #ffff;
-}
-
-main .container-fluid{
-    min-height: 100vh;
+body{
     background-color: #091c47; 
-}
 
+}
 .contenedor-registro{
     background-color: #0c255e;
 } 
+
 
 .list-group-item{
     background-color: #0c255e;
@@ -39,4 +43,20 @@ main .container-fluid{
 .texto-error{
     font-size: smaller;
     color: red;
+}
+
+@media(max-width:768px){
+    body{
+        font-size: 0.9em;
+    }
+
+    .contenedor-registro{
+        width: 100% !important;
+        h3{
+            font-size: 1.5em;
+        }
+        input{
+            font-size: inherit;
+        }
+    }
 }
